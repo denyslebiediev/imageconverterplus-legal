@@ -3,6 +3,16 @@
    Markup is <details>/<summary>; links work fine without this file. */
 (function () {
     'use strict';
+
+    /* Cloudflare Web Analytics beacon (cookieless, no consent banner needed).
+       ponytail: lives here because this is the one script all 244 pages load —
+       the 180 locale subpages aren't regenerated from a template. */
+    var cf = document.createElement('script');
+    cf.type = 'module';
+    cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    cf.setAttribute('data-cf-beacon', '{"token":"643a998263e043b1b934be48cb6d38b1"}');
+    document.head.appendChild(cf);
+
     var menu = document.querySelector('.lang-menu');
     if (!menu) return;
     var summary = menu.querySelector('summary');
